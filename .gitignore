@@ -1,0 +1,13 @@
+# Dependencias (se reinstalan con npm install)
+node_modules/
+
+# Configuración local con credenciales (NO subir a GitHub)
+.env
+
+# Compilación y caché de Angular
+dist/
+.angular/
+
+# Sistema
+.DS_Store
+Thumbs.db
