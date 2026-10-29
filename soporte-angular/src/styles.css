@@ -1,1 +1,242 @@
-/* You can add global styles to this file, and also import other style files */
+
+:root {
+  --color-primario: #0b4f8a;
+  --color-primario-oscuro: #083a66;
+  --color-primario-claro: #e6f0f9;
+  --color-fondo: #f3f5f8;
+  --color-superficie: #ffffff;
+  --color-texto: #1f2a37;
+  --color-texto-suave: #64748b;
+  --color-borde: #dbe1e8;
+  --color-peligro: #c62828;
+  --color-exito: #2e7d32;
+  --radio: 10px;
+  --sombra: 0 1px 3px rgba(15, 23, 42, 0.08), 0 4px 12px rgba(15, 23, 42, 0.04);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif;
+  background: var(--color-fondo);
+  color: var(--color-texto);
+  line-height: 1.5;
+}
+
+h1, h2, h3 {
+  line-height: 1.25;
+}
+
+a {
+  color: var(--color-primario);
+}
+
+/* Contenedor de página */
+.contenedor {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 28px 20px 48px;
+}
+
+.contenedor-angosto {
+  max-width: 760px;
+}
+
+.encabezado-pagina {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.encabezado-pagina h2 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.encabezado-pagina p {
+  margin: 4px 0 0;
+  color: var(--color-texto-suave);
+}
+
+/* Tarjeta */
+.tarjeta {
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 24px;
+}
+
+/* Botones */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px 16px;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s, border-color 0.15s, opacity 0.15s;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primario {
+  background: var(--color-primario);
+  color: #fff;
+}
+
+.btn-primario:hover:not(:disabled) {
+  background: var(--color-primario-oscuro);
+}
+
+.btn-secundario {
+  background: var(--color-superficie);
+  color: var(--color-texto);
+  border-color: var(--color-borde);
+}
+
+.btn-secundario:hover {
+  background: var(--color-fondo);
+}
+
+.btn-peligro {
+  background: var(--color-superficie);
+  color: var(--color-peligro);
+  border-color: #f1c4c4;
+}
+
+.btn-peligro:hover:not(:disabled) {
+  background: #fdecec;
+}
+
+.btn-sm {
+  padding: 6px 11px;
+  font-size: 0.85rem;
+}
+
+/* Alertas */
+.alerta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 16px;
+  border-radius: 8px;
+  border: 1px solid;
+  margin-bottom: 18px;
+}
+
+.alerta p {
+  margin: 0;
+}
+
+.alerta-error {
+  background: #fdecec;
+  border-color: #f5c2c2;
+  color: #8e1c1c;
+}
+
+.alerta-exito {
+  background: #e8f5e9;
+  border-color: #b9dfbb;
+  color: #1b5e20;
+}
+
+/* Estado de carga */
+.cargando {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-texto-suave);
+  padding: 30px 0;
+}
+
+.cargando::before {
+  content: '';
+  width: 18px;
+  height: 18px;
+  border: 3px solid var(--color-borde);
+  border-top-color: var(--color-primario);
+  border-radius: 50%;
+  animation: girar 0.8s linear infinite;
+}
+
+@keyframes girar {
+  to { transform: rotate(360deg); }
+}
+
+.vacio {
+  text-align: center;
+  color: var(--color-texto-suave);
+  padding: 40px 20px;
+}
+
+/* Insignias de estado y prioridad */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Estados */
+.estado-abierto    { background: #e3f0fd; color: #0b5cad; }
+.estado-en-proceso { background: #fff4d6; color: #8a5a00; }
+.estado-resuelto   { background: #e3f4e4; color: #1e6b23; }
+.estado-cerrado    { background: #eceff1; color: #546e7a; }
+
+/* Prioridades */
+.prioridad-baja    { background: #eef2f5; color: #4a5c6a; }
+.prioridad-media   { background: #e6f0f9; color: #0b4f8a; }
+.prioridad-alta    { background: #ffeedd; color: #b54a00; }
+.prioridad-critica { background: #fde2e2; color: #b71c1c; }
+
+/* Controles de formulario */
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #b8c4d0;
+  border-radius: 7px;
+  font: inherit;
+  color: var(--color-texto);
+  background: #fff;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-primario);
+  box-shadow: 0 0 0 3px rgba(11, 79, 138, 0.15);
+}
+
+.invalido {
+  border-color: var(--color-peligro);
+}
+
+.error-campo {
+  color: var(--color-peligro);
+}

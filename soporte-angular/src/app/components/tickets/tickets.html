@@ -1,0 +1,50 @@
+<section class="contenedor">
+  <div class="encabezado-pagina">
+    <h2>Listado de tickets</h2>
+    <a class="btn btn-primario" routerLink="/nuevo-ticket">+ Registrar ticket</a>
+  </div>
+
+  @if (cargando()) {
+    <p class="cargando">Cargando tickets...</p>
+  }
+
+  @if (error()) {
+    <div class="alerta alerta-error">
+      <p>{{ error() }}</p>
+      <button class="btn btn-secundario btn-sm" type="button" (click)="cargarTickets()">Reintentar</button>
+    </div>
+  }
+
+  @if (!cargando() && !error()) {
+    <div class="tickets">
+      @for (ticket of tickets(); track ticket.id) {
+        <article class="tarjeta ticket"
+                 [class.borde-alta]="ticket.prioridad === 'Alta'"
+                 [class.borde-critica]="ticket.prioridad === 'Crítica'">
+          <header>
+            <span class="numero">#{{ ticket.id }}</span>
+            <span class="badge {{ claseEstado(ticket.estado) }}">{{ ticket.estado }}</span>
+          </header>
+
+          <h3>{{ ticket.asunto }}</h3>
+          <p class="descripcion">{{ ticket.descripcion }}</p>
+
+          <p><strong>Solicitante:</strong> {{ ticket.solicitante }}</p>
+          <p><strong>Categoría:</strong> {{ ticket.categoria }}</p>
+          <p>
+            <strong>Prioridad:</strong>
+            <span class="badge {{ clasePrioridad(ticket.prioridad) }}">{{ ticket.prioridad }}</span>
+          </p>
+          <p><strong>Fecha:</strong> {{ ticket.fechaRegistro | date: 'dd-MM-yyyy HH:mm' }}</p>
+
+          <div class="acciones">
+            <button class="btn btn-secundario btn-sm" type="button" (click)="editar(ticket.id)">Editar</button>
+            <button class="btn btn-peligro btn-sm" type="button" (click)="eliminar(ticket.id)">Eliminar</button>
+          </div>
+        </article>
+      } @empty {
+        <p class="vacio">No existen tickets registrados.</p>
+      }
+    </div>
+  }
+</section>

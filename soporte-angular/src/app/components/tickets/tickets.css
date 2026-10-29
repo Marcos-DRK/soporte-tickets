@@ -1,0 +1,59 @@
+.tickets {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 18px;
+}
+
+.tickets > .vacio {
+  grid-column: 1 / -1;
+}
+
+.ticket {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px 20px;
+  border-left: 5px solid var(--color-borde);
+}
+
+/* Borde de color para las prioridades más urgentes */
+.borde-alta    { border-left-color: #ef6c00; }
+.borde-critica { border-left-color: #c62828; }
+
+.ticket header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.numero {
+  font-weight: 700;
+  color: var(--color-texto-suave);
+}
+
+.ticket h3 {
+  margin: 0;
+  font-size: 1.08rem;
+  color: var(--color-primario);
+}
+
+.ticket p {
+  margin: 0;
+  font-size: 0.92rem;
+}
+
+.descripcion {
+  color: var(--color-texto-suave);
+}
+
+.acciones {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-borde);
+}
+
+.acciones .btn-peligro {
+  margin-left: auto;
+}
